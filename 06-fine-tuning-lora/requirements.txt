@@ -1,0 +1,19 @@
+# Модуль 06: Дообучение через LoRA
+# Локально нужен только httpx (все живые ячейки ходят в Ollama по HTTP).
+# Установка: pip install -r requirements.txt
+
+httpx>=0.27,<1
+
+# Для ноутбуков
+jupyter>=1.0,<2
+
+# Обучение идёт на Google Colab (colab-train-lora.ipynb) - там всё ставит
+# первая ячейка (pip install unsloth). Локально эти пакеты НЕ нужны.
+#
+# Если хотите повторить обучение на своём GPU (8+ ГБ VRAM) или сделать
+# merge руками (урок 3, раздел 2) - раскомментируйте:
+# unsloth
+# peft>=0.14
+# transformers>=4.46
+# trl>=0.12
+# datasets>=3

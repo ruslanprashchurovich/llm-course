@@ -1,0 +1,28 @@
+# Секреты и локальные настройки
+.env
+*.env.local
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Локальные данные прогонов
+logs/
+*.db
+*.sqlite
+*.sqlite3
+
+# Тяжёлые артефакты (модели тянутся из Colab/Ollama, в git им не место)
+*.gguf
+*.zip
+*.safetensors
+
+# ОС / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

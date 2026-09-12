@@ -1,0 +1,72 @@
+модель: qwen3.5:9b (think=False), backend=ollama, задача: normalize_phone, приёмка: 6 кейсов
+
+Граф:
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	analyst(analyst)
+	developer(developer)
+	tester(tester)
+	tracer(tracer)
+	fixer(fixer)
+	escalate(escalate)
+	finish(finish)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> analyst;
+	analyst --> developer;
+	developer -.-> finish;
+	developer -.-> tester;
+	escalate --> tester;
+	fixer --> tester;
+	tester -.-> escalate;
+	tester -. &nbsp;accept&nbsp; .-> finish;
+	tester -. &nbsp;retry&nbsp; .-> tracer;
+	tracer --> fixer;
+	finish --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc
+
+
+=== LangGraph ===
+  аналитик -> разработчик (spec) [321 ток, 50 c]
+  разработчик -> тесты (code) [179 ток, 4 c]
+  тесты -> оркестратор (test_report)
+    тесты: 6/6
+
+ВЕРДИКТ: ACCEPTED
+Цена: 2 вызовов LLM, 725+500 ток., 54.8 c
+Маршрут по узлам: analyst -> developer -> tester -> finish
+
+Финальный код:
+def normalize_phone(text: str) -> str:
+    # Удаляем все символы, кроме цифр
+    cleaned_digits = ''.join(char for char in text if char.isdigit())
+    
+    # Проверка на пустую строку или отсутствие цифр
+    if not cleaned_digits:
+        raise ValueError("Некорректный номер телефона")
+
+    # Преобразование префикса 8 в 7
+    if cleaned_digits.startswith('8'):
+        cleaned_digits = '7' + cleaned_digits[1:]
+    
+    # Проверка на корректную длину (ровно 11 цифр) и начало с 7
+    if len(cleaned_digits) != 11 or not cleaned_digits.startswith('7'):
+        raise ValueError("Некорректный номер телефона")
+
+    return cleaned_digits
+
+=== Императивный оркестратор 7.2 (те же промпты, тот же судья) ===
+  аналитик -> разработчик (spec) [321 ток, 7 c]
+  разработчик -> тесты (code) [179 ток, 4 c]
+  тесты -> оркестратор (test_report)
+    тесты: 6/6
+
+ВЕРДИКТ: ACCEPTED  (2 вызовов, 11.4 c)
+
+Форма журналов совпала узел в узел: ДА

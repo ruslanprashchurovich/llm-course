@@ -1,0 +1,1567 @@
+{
+    "backend": "ollama",
+    "model": "qwen3.5:9b",
+    "modes": {
+        "solo": [
+            {
+                "ticket": "T01",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "outage",
+                    "priority": "high",
+                    "facts": [
+                        "С 09:40 сайт pingvin-shop.ru отдаёт 502 Bad Gateway всем посетителям.",
+                        "Магазин стоит, теряем заказы каждую минуту."
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент сообщает о недоступности сайта pingvin-shop.ru с ошибкой 502 Bad Gateway, из-за чего теряются заказы."
+                },
+                "gold": {
+                    "category": "outage",
+                    "priority": "critical",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 436,
+                "answer_tokens": 97,
+                "seconds": 2.6,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T02",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "billing",
+                    "priority": "high",
+                    "facts": [
+                        "С карты списали 1990 рублей дважды за один тариф «Старт»",
+                        "в кабинете два одинаковых счёта № 48211 и № 48212"
+                    ],
+                    "needs_human": true,
+                    "summary": "Клиент сообщает о двойном списании средств за тариф Старт на счетах 48211 и 48212 и просит вернуть лишнюю сумму."
+                },
+                "gold": {
+                    "category": "billing",
+                    "priority": "normal",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 449,
+                "answer_tokens": 110,
+                "seconds": 2.8,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T03",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "question",
+                    "priority": "low",
+                    "facts": [
+                        "Подскажите, как подключить бесплатный SSL-сертификат Let's Encrypt к домену через панель?",
+                        "Нашёл только платный вариант."
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент спрашивает о процедуре подключения бесплатного сертификата Let's Encrypt в панели управления."
+                },
+                "gold": {
+                    "category": "question",
+                    "priority": "low",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 429,
+                "answer_tokens": 80,
+                "seconds": 2.1,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T04",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "access",
+                    "priority": "high",
+                    "facts": [
+                        "пароль верный, но выводится «аккаунт заблокирован»",
+                        "Хостинг оплачен до декабря"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент не может войти в панель управления из-за блокировки аккаунта при правильном пароле."
+                },
+                "gold": {
+                    "category": "access",
+                    "priority": "normal",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 434,
+                "answer_tokens": 79,
+                "seconds": 2.1,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T05",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "performance",
+                    "priority": "high",
+                    "facts": [
+                        "сайт грузится 8–10 секунд вместо привычных двух",
+                        "особенно вечером"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент жалуется на замедление загрузки сайта до 8-10 секунд в последние три дня, особенно вечером."
+                },
+                "gold": {
+                    "category": "performance",
+                    "priority": "normal",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 435,
+                "answer_tokens": 75,
+                "seconds": 2.0,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T06",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "other",
+                    "priority": "low",
+                    "facts": [
+                        "ВСЁ СЛОМАЛОСЬ!!!",
+                        "НИЧЕГО НЕ РАБОТАЕТ!!!"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент сообщает о полном отказе сервисов без предоставления конкретных фактов для классификации."
+                },
+                "gold": {
+                    "category": "other",
+                    "priority": "low",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 424,
+                "answer_tokens": 72,
+                "seconds": 1.9,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T07",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "outage",
+                    "priority": "high",
+                    "facts": [
+                        "Почта на домене pingvin-cafe.ru не принимает письма с 14:00",
+                        "отправители получают ошибку 550 relay denied"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент сообщает о недоступности почтового сервиса на домене pingvin-cafe.ru с ошибкой отказа в релейровании."
+                },
+                "gold": {
+                    "category": "outage",
+                    "priority": "high",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 438,
+                "answer_tokens": 91,
+                "seconds": 2.4,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T08",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "billing",
+                    "priority": "normal",
+                    "facts": [
+                        "Пришёл счёт за продление домена на 2027 год, хотя мы уже оплатили продление в июле, чек № 77120 сохранился.",
+                        "Это дубль или что-то новое?"
+                    ],
+                    "needs_human": true,
+                    "summary": "Клиент получил повторный счёт за продление домена на 2027 год после оплаты в июле и просит проверить наличие дублирования списания."
+                },
+                "gold": {
+                    "category": "billing",
+                    "priority": "low",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 451,
+                "answer_tokens": 116,
+                "seconds": 3.0,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T09",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "access",
+                    "priority": "critical",
+                    "facts": [
+                        "Кто-то сменил пароль от FTP",
+                        "в корне сайта появился файл wp-shell.php"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент сообщает о взломе аккаунта через смену пароля FTP и появление вредоносного файла."
+                },
+                "gold": {
+                    "category": "access",
+                    "priority": "critical",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 435,
+                "answer_tokens": 75,
+                "seconds": 2.0,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T10",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "question",
+                    "priority": "low",
+                    "facts": [
+                        "Есть ли у вас инструмент переноса сайта на WordPress",
+                        "сколько стоит услуга переноса"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент интересуется наличием инструмента и стоимостью услуги по переносу сайта на WordPress."
+                },
+                "gold": {
+                    "category": "question",
+                    "priority": "low",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 435,
+                "answer_tokens": 70,
+                "seconds": 2.0,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T11",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "performance",
+                    "priority": "high",
+                    "facts": [
+                        "Раз в час база MySQL перестаёт отвечать на 30–40 секунд",
+                        "в логах ошибка Too many connections",
+                        "Сайт в это время показывает ошибку 500"
+                    ],
+                    "needs_human": false,
+                    "summary": "База данных MySQL периодически недоступна из-за превышения лимита соединений, что вызывает ошибки 500 на сайте."
+                },
+                "gold": {
+                    "category": "performance",
+                    "priority": "high",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 436,
+                "answer_tokens": 94,
+                "seconds": 2.5,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T12",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "access",
+                    "priority": "high",
+                    "facts": [
+                        "Договор № 5531",
+                        "Прошу удалить мой аккаунт и все персональные данные по 152-ФЗ"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент с договора № 5531 просит удалить аккаунт и данные согласно 152-ФЗ."
+                },
+                "gold": {
+                    "category": "other",
+                    "priority": "normal",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 434,
+                "answer_tokens": 88,
+                "seconds": 2.4,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            }
+        ],
+        "solo+fix": [
+            {
+                "ticket": "T01",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "outage",
+                    "priority": "high",
+                    "facts": [
+                        "С 09:40 сайт pingvin-shop.ru отдаёт 502 Bad Gateway всем посетителям.",
+                        "Магазин стоит, теряем заказы каждую минуту."
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент сообщает о недоступности сайта pingvin-shop.ru с ошибкой 502 Bad Gateway, из-за чего теряются заказы."
+                },
+                "gold": {
+                    "category": "outage",
+                    "priority": "critical",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 436,
+                "answer_tokens": 97,
+                "seconds": 2.5,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T02",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "billing",
+                    "priority": "high",
+                    "facts": [
+                        "С карты списали 1990 рублей дважды за один тариф «Старт»",
+                        "в кабинете два одинаковых счёта № 48211 и № 48212"
+                    ],
+                    "needs_human": true,
+                    "summary": "Клиент сообщает о двойном списании средств за тариф Старт на счетах 48211 и 48212 и просит вернуть лишнюю сумму."
+                },
+                "gold": {
+                    "category": "billing",
+                    "priority": "normal",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 449,
+                "answer_tokens": 110,
+                "seconds": 2.8,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T03",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "question",
+                    "priority": "low",
+                    "facts": [
+                        "Подскажите, как подключить бесплатный SSL-сертификат Let's Encrypt к домену через панель?",
+                        "Нашёл только платный вариант."
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент спрашивает о процедуре подключения бесплатного сертификата Let's Encrypt в панели управления."
+                },
+                "gold": {
+                    "category": "question",
+                    "priority": "low",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 429,
+                "answer_tokens": 80,
+                "seconds": 2.1,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T04",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "access",
+                    "priority": "high",
+                    "facts": [
+                        "пароль верный, но выводится «аккаунт заблокирован»",
+                        "Хостинг оплачен до декабря"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент не может войти в панель управления из-за блокировки аккаунта при правильном пароле."
+                },
+                "gold": {
+                    "category": "access",
+                    "priority": "normal",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 434,
+                "answer_tokens": 79,
+                "seconds": 2.1,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T05",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "performance",
+                    "priority": "high",
+                    "facts": [
+                        "сайт грузится 8–10 секунд вместо привычных двух",
+                        "особенно вечером"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент жалуется на замедление загрузки сайта до 8-10 секунд в последние три дня, особенно вечером."
+                },
+                "gold": {
+                    "category": "performance",
+                    "priority": "normal",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 435,
+                "answer_tokens": 75,
+                "seconds": 2.0,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T06",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "other",
+                    "priority": "low",
+                    "facts": [
+                        "ВСЁ СЛОМАЛОСЬ!!!",
+                        "НИЧЕГО НЕ РАБОТАЕТ!!!"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент сообщает о полном отказе сервисов без предоставления конкретных фактов для классификации."
+                },
+                "gold": {
+                    "category": "other",
+                    "priority": "low",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 424,
+                "answer_tokens": 72,
+                "seconds": 1.9,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T07",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "outage",
+                    "priority": "high",
+                    "facts": [
+                        "Почта на домене pingvin-cafe.ru не принимает письма с 14:00",
+                        "отправители получают ошибку 550 relay denied"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент сообщает о недоступности почтового сервиса на домене pingvin-cafe.ru с ошибкой отказа в релейровании."
+                },
+                "gold": {
+                    "category": "outage",
+                    "priority": "high",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 438,
+                "answer_tokens": 91,
+                "seconds": 2.4,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T08",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "billing",
+                    "priority": "normal",
+                    "facts": [
+                        "Пришёл счёт за продление домена на 2027 год, хотя мы уже оплатили продление в июле, чек № 77120 сохранился.",
+                        "Это дубль или что-то новое?"
+                    ],
+                    "needs_human": true,
+                    "summary": "Клиент получил повторный счёт за продление домена на 2027 год после оплаты в июле и просит проверить наличие дублирования списания."
+                },
+                "gold": {
+                    "category": "billing",
+                    "priority": "low",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 451,
+                "answer_tokens": 116,
+                "seconds": 2.9,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T09",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "access",
+                    "priority": "critical",
+                    "facts": [
+                        "Кто-то сменил пароль от FTP",
+                        "в корне сайта появился файл wp-shell.php"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент сообщает о взломе аккаунта через смену пароля FTP и появление вредоносного файла."
+                },
+                "gold": {
+                    "category": "access",
+                    "priority": "critical",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 435,
+                "answer_tokens": 75,
+                "seconds": 2.0,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T10",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "question",
+                    "priority": "low",
+                    "facts": [
+                        "Есть ли у вас инструмент переноса сайта на WordPress",
+                        "сколько стоит услуга переноса"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент интересуется наличием инструмента и стоимостью услуги по переносу сайта на WordPress."
+                },
+                "gold": {
+                    "category": "question",
+                    "priority": "low",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 435,
+                "answer_tokens": 70,
+                "seconds": 1.9,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T11",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "performance",
+                    "priority": "high",
+                    "facts": [
+                        "Раз в час база MySQL перестаёт отвечать на 30–40 секунд",
+                        "в логах ошибка Too many connections",
+                        "Сайт в это время показывает ошибку 500"
+                    ],
+                    "needs_human": false,
+                    "summary": "База данных MySQL периодически недоступна из-за превышения лимита соединений, что вызывает ошибки 500 на сайте."
+                },
+                "gold": {
+                    "category": "performance",
+                    "priority": "high",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 436,
+                "answer_tokens": 94,
+                "seconds": 2.5,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T12",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "access",
+                    "priority": "high",
+                    "facts": [
+                        "Договор № 5531",
+                        "Прошу удалить мой аккаунт и все персональные данные по 152-ФЗ"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент с договора № 5531 просит удалить аккаунт и данные согласно 152-ФЗ."
+                },
+                "gold": {
+                    "category": "other",
+                    "priority": "normal",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 1,
+                "prompt_tokens": 434,
+                "answer_tokens": 88,
+                "seconds": 2.3,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            }
+        ],
+        "team": [
+            {
+                "ticket": "T01",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "outage",
+                    "priority": "high",
+                    "facts": [
+                        "С 09:40",
+                        "сайт pingvin-shop.ru",
+                        "отдаёт 502 Bad Gateway",
+                        "всем посетителям"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент сообщает о недоступности сайта pingvin-shop.ru с ошибкой 502 Bad Gateway для всех посетителей."
+                },
+                "gold": {
+                    "category": "outage",
+                    "priority": "critical",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 2,
+                "prompt_tokens": 645,
+                "answer_tokens": 122,
+                "seconds": 3.3,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T02",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "billing",
+                    "priority": "high",
+                    "facts": [
+                        "списали 1990 рублей",
+                        "дважды за один тариф «Старт»",
+                        "в кабинете два одинаковых счёта № 48211 и № 48212",
+                        "Верните лишнее списание"
+                    ],
+                    "needs_human": true,
+                    "summary": "Клиент сообщает о двойном списании 1990 рублей за тариф Старт из-за наличия двух счетов и просит вернуть лишнюю сумму."
+                },
+                "gold": {
+                    "category": "billing",
+                    "priority": "normal",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 2,
+                "prompt_tokens": 692,
+                "answer_tokens": 171,
+                "seconds": 4.4,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T03",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "question",
+                    "priority": "low",
+                    "facts": [
+                        "Подскажите, как подключить бесплатный SSL-сертификат Let's Encrypt к домену через панель? Нашёл только платный вариант."
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент спрашивает о процедуре подключения бесплатного SSL-сертификата Let's Encrypt через панель управления."
+                },
+                "gold": {
+                    "category": "question",
+                    "priority": "low",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 3,
+                "prompt_tokens": 1126,
+                "answer_tokens": 136,
+                "seconds": 10.1,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T04",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "access",
+                    "priority": "high",
+                    "facts": [
+                        "пароль верный",
+                        "выводится «аккаунт заблокирован»",
+                        "Хостинг оплачен до декабря",
+                        "сайты работают"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент не может войти в панель управления из-за блокировки аккаунта при правильном пароле, но хостинг оплачен и сайты функционируют."
+                },
+                "gold": {
+                    "category": "access",
+                    "priority": "normal",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 2,
+                "prompt_tokens": 641,
+                "answer_tokens": 132,
+                "seconds": 3.6,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T05",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "performance",
+                    "priority": "high",
+                    "facts": [
+                        "сайт грузится 8–10 секунд",
+                        "вместо привычных двух",
+                        "особенно вечером",
+                        "Тариф «Бизнес»"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент жалуется на замедление загрузки сайта до 8-10 секунд вместо обычных двух последних три дня."
+                },
+                "gold": {
+                    "category": "performance",
+                    "priority": "normal",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 2,
+                "prompt_tokens": 643,
+                "answer_tokens": 122,
+                "seconds": 3.4,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T06",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "other",
+                    "priority": "low",
+                    "facts": [
+                        "ВСЁ СЛОМАЛОСЬ!!! НИЧЕГО НЕ РАБОТАЕТ!!! СРОЧНО!!!"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент сообщает о полном отказе сервисов без предоставления конкретных фактов для анализа."
+                },
+                "gold": {
+                    "category": "other",
+                    "priority": "low",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 2,
+                "prompt_tokens": 588,
+                "answer_tokens": 74,
+                "seconds": 2.3,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T07",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "outage",
+                    "priority": "high",
+                    "facts": [
+                        "Почта на домене pingvin-cafe.ru не принимает письма",
+                        "отправители получают ошибку 550 relay denied"
+                    ],
+                    "needs_human": false,
+                    "summary": "Проблема с доставкой писел на почтовый сервер клиента pingvin-cafe.ru с ошибкой отказа в релейной доставке."
+                },
+                "gold": {
+                    "category": "outage",
+                    "priority": "high",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 2,
+                "prompt_tokens": 640,
+                "answer_tokens": 122,
+                "seconds": 3.4,
+                "facts_dropped": 1,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T08",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "billing",
+                    "priority": "normal",
+                    "facts": [
+                        "чек № 77120"
+                    ],
+                    "needs_human": true,
+                    "summary": "Клиент сообщает о получении счета за продление домена на 2027 год при наличии чека об оплате от июля и просит уточнить статус операции."
+                },
+                "gold": {
+                    "category": "billing",
+                    "priority": "low",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 2,
+                "prompt_tokens": 651,
+                "answer_tokens": 83,
+                "seconds": 2.5,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T09",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "access",
+                    "priority": "critical",
+                    "facts": [
+                        "Кто-то сменил пароль от FTP",
+                        "в корне сайта появился файл wp-shell.php",
+                        "файл wp-shell.php, который мы не создавали"
+                    ],
+                    "needs_human": true,
+                    "summary": "Клиент сообщает о взломе аккаунта: изменен пароль FTP и обнаружен неизвестный вредоносный файл в корне сайта."
+                },
+                "gold": {
+                    "category": "access",
+                    "priority": "critical",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 2,
+                "prompt_tokens": 645,
+                "answer_tokens": 131,
+                "seconds": 3.6,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T10",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "question",
+                    "priority": "low",
+                    "facts": [
+                        "Есть ли у вас инструмент переноса сайта на WordPress и сколько стоит услуга переноса?"
+                    ],
+                    "needs_human": false,
+                    "summary": "Клиент интересуется наличием инструмента и стоимостью услуги миграции сайта на WordPress."
+                },
+                "gold": {
+                    "category": "question",
+                    "priority": "low",
+                    "needs_human": false
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 2,
+                "prompt_tokens": 610,
+                "answer_tokens": 70,
+                "seconds": 2.2,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T11",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "performance",
+                    "priority": "high",
+                    "facts": [
+                        "Раз в час база MySQL перестаёт отвечать на 30–40 секунд",
+                        "в логах ошибка Too many connections"
+                    ],
+                    "needs_human": false,
+                    "summary": "База данных клиента периодически недоступна из-за превышения лимита соединений."
+                },
+                "gold": {
+                    "category": "performance",
+                    "priority": "high",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 2,
+                "prompt_tokens": 626,
+                "answer_tokens": 105,
+                "seconds": 3.0,
+                "facts_dropped": 2,
+                "degraded_calls": 0
+            },
+            {
+                "ticket": "T12",
+                "accepted": true,
+                "escalated": false,
+                "got": {
+                    "category": "access",
+                    "priority": "high",
+                    "facts": [
+                        "Договор № 5531",
+                        "Услуги больше не нужны"
+                    ],
+                    "needs_human": false,
+                    "summary": "Запрос на удаление аккаунта и персональных данных по договору № 5531."
+                },
+                "gold": {
+                    "category": "other",
+                    "priority": "normal",
+                    "needs_human": true
+                },
+                "checks": [
+                    {
+                        "name": "schema",
+                        "ok": true,
+                        "detail": "схема соблюдена"
+                    },
+                    {
+                        "name": "grounded",
+                        "ok": true,
+                        "detail": "все цитаты найдены в тикете"
+                    },
+                    {
+                        "name": "rules",
+                        "ok": true,
+                        "detail": "правила триажа соблюдены"
+                    }
+                ],
+                "llm_calls": 2,
+                "prompt_tokens": 625,
+                "answer_tokens": 84,
+                "seconds": 2.5,
+                "facts_dropped": 0,
+                "degraded_calls": 0
+            }
+        ]
+    }
+}

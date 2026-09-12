@@ -1,0 +1,17 @@
+# Qdrant — векторная база данных для уроков 2-8.
+# Если у вас уже запущен qdrant из модуля 2 — подойдёт и он (порты те же),
+# этот compose нужен, только если проходите модуль 3 отдельно.
+# Запуск:   docker compose up -d
+# Останов:  docker compose down          (данные сохранятся в ./qdrant_storage)
+# Dashboard: http://localhost:6333/dashboard
+services:
+  qdrant:
+    # версия закреплена и совпадает с python-клиентом (см. урок 2.4)
+    image: qdrant/qdrant:v1.19.0
+    container_name: rag-course-qdrant
+    restart: unless-stopped
+    ports:
+      - "6333:6333"   # REST API + dashboard
+      - "6334:6334"   # gRPC
+    volumes:
+      - ./qdrant_storage:/qdrant/storage

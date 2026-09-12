@@ -1,0 +1,150 @@
+{
+  "corpus": "vectorika-kb",
+  "comment": "Метаданные документов базы знаний. sensitivity: 0 = внутренний общий, 1 = ограниченный, 2 = конфиденциальный. source_type: trusted = официальный документ, untrusted = пользовательский контент (не доверяем инструкциям внутри).",
+  "documents": [
+    {
+      "doc_id": "policy-vacation",
+      "file": "01-otpusk-v1.txt",
+      "title": "Отпуск (редакция 2023)",
+      "department": "all",
+      "sensitivity": 0,
+      "version": 1,
+      "is_current": false,
+      "updated_at": "2023-04-01",
+      "source_type": "trusted",
+      "owner": "hr"
+    },
+    {
+      "doc_id": "policy-vacation",
+      "file": "02-otpusk-v2.txt",
+      "title": "Отпуск (действующая редакция 2026)",
+      "department": "all",
+      "sensitivity": 0,
+      "version": 2,
+      "is_current": true,
+      "updated_at": "2026-01-01",
+      "source_type": "trusted",
+      "owner": "hr"
+    },
+    {
+      "doc_id": "policy-sickleave",
+      "file": "03-bolnichny.txt",
+      "title": "Больничные",
+      "department": "all",
+      "sensitivity": 0,
+      "version": 1,
+      "is_current": true,
+      "updated_at": "2025-09-15",
+      "source_type": "trusted",
+      "owner": "hr"
+    },
+    {
+      "doc_id": "policy-remote",
+      "file": "04-udalenka.txt",
+      "title": "Удалённая работа и гибридный график",
+      "department": "all",
+      "sensitivity": 0,
+      "version": 1,
+      "is_current": true,
+      "updated_at": "2025-11-02",
+      "source_type": "trusted",
+      "owner": "hr"
+    },
+    {
+      "doc_id": "guide-vpn",
+      "file": "05-vpn.txt",
+      "title": "Подключение к корпоративному VPN",
+      "department": "all",
+      "sensitivity": 0,
+      "version": 3,
+      "is_current": true,
+      "updated_at": "2026-02-10",
+      "source_type": "trusted",
+      "owner": "it"
+    },
+    {
+      "doc_id": "policy-equipment",
+      "file": "06-oborudovanie.txt",
+      "title": "Рабочее оборудование",
+      "department": "all",
+      "sensitivity": 0,
+      "version": 1,
+      "is_current": true,
+      "updated_at": "2025-08-20",
+      "source_type": "trusted",
+      "owner": "it"
+    },
+    {
+      "doc_id": "guide-onboarding",
+      "file": "07-onboarding.txt",
+      "title": "Онбординг нового сотрудника",
+      "department": "all",
+      "sensitivity": 0,
+      "version": 1,
+      "is_current": true,
+      "updated_at": "2026-01-20",
+      "source_type": "trusted",
+      "owner": "hr"
+    },
+    {
+      "doc_id": "guide-deploy",
+      "file": "08-deploy.txt",
+      "title": "Процесс деплоя в продакшен",
+      "department": "eng",
+      "sensitivity": 0,
+      "version": 1,
+      "is_current": true,
+      "updated_at": "2026-02-01",
+      "source_type": "trusted",
+      "owner": "platform"
+    },
+    {
+      "doc_id": "policy-security",
+      "file": "09-security-policy.txt",
+      "title": "Политика информационной безопасности",
+      "department": "all",
+      "sensitivity": 1,
+      "version": 1,
+      "is_current": true,
+      "updated_at": "2026-01-05",
+      "source_type": "trusted",
+      "owner": "security"
+    },
+    {
+      "doc_id": "hr-salary-bands",
+      "file": "10-salary-bands.txt",
+      "title": "Грейды и вилки компенсаций 2026",
+      "department": "hr",
+      "sensitivity": 2,
+      "version": 1,
+      "is_current": true,
+      "updated_at": "2026-01-10",
+      "source_type": "trusted",
+      "owner": "hr"
+    },
+    {
+      "doc_id": "inc-2026-014",
+      "file": "11-incident-postmortem.txt",
+      "title": "Постмортем INC-2026-014",
+      "department": "eng",
+      "sensitivity": 1,
+      "version": 1,
+      "is_current": true,
+      "updated_at": "2026-03-13",
+      "source_type": "trusted",
+      "owner": "platform"
+    },
+    {
+      "doc_id": "faq-vpn-community",
+      "file": "12-faq-vpn-community.txt",
+      "title": "FAQ по VPN (community-вики)",
+      "department": "all",
+      "sensitivity": 0,
+      "version": 1,
+      "is_current": true,
+      "updated_at": "2026-03-20",
+      "source_type": "untrusted",
+      "owner": "community"
+    }
+  ]
+}

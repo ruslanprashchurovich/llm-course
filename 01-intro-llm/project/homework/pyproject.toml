@@ -1,0 +1,31 @@
+# Упаковка — ЗАДАНИЕ 5. Ставим пакет и получаем команду `llm`:
+#   pip install -e .        (из этой папки)
+#   llm ask "Что такое GIL?"
+#
+# entry point ниже связывает имя команды `llm` с функцией llm_hw.cli:main.
+# Console-script требует ВЫЗЫВАЕМУЮ функцию без аргументов, поэтому точка входа —
+# main() (обёртка над Typer-приложением), а не сам объект `app`.
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llm-hw"
+version = "0.1.0"
+description = "Терминальный LLM-помощник на локальной Ollama — решение домашки урока 1.8"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.40",     # OpenAI-совместимый клиент (работает и с Ollama)
+    "httpx>=0.27",      # прямые запросы к /api/tags в health
+    "pydantic>=2.6",    # схема TicketRoute в classify
+    "typer>=0.12",      # CLI (бонус задания 5)
+    "rich>=13.7",       # цветной вывод и таблицы (бонус задания 5)
+]
+
+[project.scripts]
+llm = "llm_hw.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["llm_hw"]

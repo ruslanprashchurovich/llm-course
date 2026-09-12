@@ -1,0 +1,34 @@
+# --- Ядро RAG (уроки 1-2) ---
+sentence-transformers>=3.0,<6
+numpy>=1.26,<3
+qdrant-client>=1.12,<2
+httpx>=0.27,<1
+ollama>=0.4,<1
+
+# --- Веб-сервис (уроки 2, 7, 8) ---
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30,<1
+pydantic>=2.7,<3
+pydantic-settings>=2.3,<3
+
+# --- Оценка качества (урок 3) ---
+# Связка проверена в августе 2026: свежий ragas (0.4.x) требует langchain>=1,
+# а его метрики с маленьким локальным судьёй всё равно работают не лучше.
+ragas==0.2.15
+datasets>=2.19,<5
+langchain<1
+langchain-core>=0.3,<0.4
+langchain-community>=0.3,<0.4
+langchain-ollama>=0.2,<0.3
+
+# --- Агенты (урок 6) ---
+langgraph>=0.2,<0.4          # 0.2-0.3 совместимы с langchain-core 0.3.x (нужен ragas)
+
+# --- Продакшен (урок 7-8) ---
+structlog>=24.1,<27
+
+# --- Тесты и ноутбуки ---
+pytest>=8.0,<9
+pytest-asyncio>=0.23,<2
+jupyterlab>=4.1,<5
+tqdm>=4.66,<5

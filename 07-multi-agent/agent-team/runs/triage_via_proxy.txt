@@ -1,0 +1,31 @@
+backend=proxy -> http://127.0.0.1:8005; think=False; тикетов: 4
+
+===== team =====
+  [team    ] T01 OK  outage/critical/human        gold outage/critical/human  [+++] 2 выз., 4 c
+  [team    ] T02 OK  billing/normal/human         gold billing/normal/human  [+++] 3 выз., 7 c
+  [team    ] T03 OK  question/low/bot             gold question/low/bot  [+++] 2 выз., 54 c
+  [team    ] T04 OK  access/high/human            gold access/normal/human  [+-+] 2 выз., 3 c
+
+===== сравнение =====
+метрика                      team
+---------------------------  ----
+тикетов                      4   
+принято судьёй               100%
+эскалаций «нужен человек»    0   
+схема соблюдена              100%
+цитаты заземлены             100%
+правила соблюдены            100%
+category верно               100%
+priority верно (точно)       75% 
+priority верно (±1 уровень)  100%
+needs_human верно            100%
+КАЧЕСТВО (среднее трёх)      92% 
+вызовов LLM                  9   
+токенов всего                4379
+секунд                       67  
+proxy_requests_total{status="ok"} 9.0
+proxy_requests_total{status="rate_limited"} 2.0
+proxy_routed_total{route="primary"} 9.0
+proxy_gen_tokens_per_second_p50 45.407442604181696
+proxy_last_queue_ms 0.03900006413459778
+proxy_degraded 0.0

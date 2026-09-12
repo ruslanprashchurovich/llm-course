@@ -1,0 +1,16 @@
+# Docs Assistant - финальный проект курса.
+# Установка: pip install -r requirements.txt
+# (sentence-transformers подтянет PyTorch; на Windows/Linux без CUDA
+#  по умолчанию встанет CPU-сборка - для этого проекта её достаточно)
+
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30,<1
+pydantic-settings>=2.4,<3
+httpx>=0.27,<1
+qdrant-client>=1.12,<2
+sentence-transformers>=3.0,<6
+aiosqlite>=0.20,<1
+prometheus-client>=0.20,<1
+
+# --- разработка и тесты ---
+pytest>=8,<9

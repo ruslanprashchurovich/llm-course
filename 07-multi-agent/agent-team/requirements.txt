@@ -1,0 +1,18 @@
+# agent-team — эталон практики 7.4. Ставится в обычное окружение курса (ml_env).
+#
+# Задание 1 (LangGraph) и задание 3 (триаж) работают на этом минимуме:
+httpx>=0.27,<1
+pydantic>=2.7,<3
+langgraph>=1.2,<2
+pytest>=8,<10
+
+# Задание 2 (AutoGen SelectorGroupChat). ВНИМАНИЕ: autogen-core пинит protobuf~=5.29
+# и откатит protobuf, если он у вас новее (qdrant-client, onnxruntime хотят 6.x).
+# Поэтому ставьте ДВУМЯ шагами (урок 7.4, частая ошибка 2):
+#   pip install "autogen-agentchat==0.7.5" "autogen-ext[ollama]==0.7.5"
+#   pip install "protobuf>=6.33"      # вернуть; предупреждение резолвера безвредно
+# autogen-agentchat==0.7.5
+# autogen-ext[ollama]==0.7.5
+
+# Необязательно: ASCII-схема графа (иначе скрипт печатает mermaid)
+# grandalf>=0.8

@@ -1,0 +1,48 @@
+# Полное окружение Docs Assistant: Qdrant + Ollama + приложение.
+#
+#   docker compose up -d --build
+#   docker compose exec ollama ollama pull qwen3.5:9b     # один раз
+#   docker compose run --rm app python scripts/index_docs.py
+
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.19.0
+    # Только loopback: у Qdrant нет аутентификации по умолчанию, в сеть его не выставляем.
+    # Приложение ходит по внутренней сети compose (http://qdrant:6333), хосту порт нужен
+    # лишь для ноутбуков уроков 8.2–8.3 и отладки.
+    ports:
+      - "127.0.0.1:6333:6333"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    # Порт наружу НЕ публикуем (урок 5.7): у Ollama нет аутентификации, лимитов и потолка
+    # num_predict — к ней ходит только приложение по внутренней сети compose.
+    # Нужна Ollama с хоста? Идите через контейнер: docker compose exec ollama ollama run ...
+    volumes:
+      - ollama_models:/root/.ollama
+    restart: unless-stopped
+
+  app:
+    build: .
+    # Единственная точка входа, и та на loopback: в бою перед приложением стоит
+    # reverse-proxy/ingress с TLS, а не голый порт на всех интерфейсах.
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      APP_QDRANT_URL: http://qdrant:6333
+      APP_OLLAMA_BASE_URL: http://ollama:11434
+      APP_LLM_MODEL: qwen2.5:3b
+    volumes:
+      - history_data:/srv/app/data
+    depends_on:
+      - qdrant
+      - ollama
+    restart: unless-stopped
+
+volumes:
+  qdrant_storage:
+  ollama_models:
+  history_data:

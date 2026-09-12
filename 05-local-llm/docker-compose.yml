@@ -1,0 +1,39 @@
+# Ollama в Docker (урок 3). Запуск:  docker compose up -d
+# Скачать модель внутрь контейнера:  docker compose exec ollama ollama pull llama3.2:3b
+#
+# Windows: Docker Desktop работает через WSL2. Лимит RAM для WSL2 задаётся
+# в файле %USERPROFILE%\.wslconfig (секция [wsl2], параметр memory=12GB) —
+# иначе контейнеру может не хватить памяти под модель.
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      # Привязываем к localhost: у Ollama НЕТ встроенной аутентификации,
+      # наружу её выставлять нельзя (только через reverse-proxy с auth).
+      - "127.0.0.1:11434:11434"
+    volumes:
+      # Именованный том: модели переживают пересоздание контейнера
+      - ollama_models:/root/.ollama
+    environment:
+      - OLLAMA_KEEP_ALIVE=30m      # держать модель в RAM 30 минут после запроса
+      - OLLAMA_NUM_PARALLEL=1      # CPU-инференс память-bound: параллелизм не ускоряет
+      - OLLAMA_MAX_QUEUE=128       # очередь ожидания; при переполнении клиент получит 503
+      - OLLAMA_MAX_LOADED_MODELS=1 # не держать в RAM несколько моделей сразу
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "ollama", "ls"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    # Жёсткий потолок памяти: пусть контейнер упадёт и перезапустится,
+    # чем утащит в swap весь хост (docker compose v2 понимает deploy.resources)
+    deploy:
+      resources:
+        limits:
+          memory: 12g
+
+volumes:
+  ollama_models:

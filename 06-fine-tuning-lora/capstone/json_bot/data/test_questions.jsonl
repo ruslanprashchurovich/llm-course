@@ -1,0 +1,24 @@
+{"question": "Назовите все ваши тарифы одним списком.", "kind": "on_topic", "topic": "tariffs"}
+{"question": "Если я случайно удалю файлы, есть ли откуда восстановить?", "kind": "on_topic", "topic": "backups"}
+{"question": "Придётся ли доплачивать за HTTPS-сертификат?", "kind": "on_topic", "topic": "ssl"}
+{"question": "Мой сайт требует PHP 8.2 — это возможно?", "kind": "on_topic", "topic": "php_versions"}
+{"question": "Через сколько дней после просрочки платежа сайт отключат?", "kind": "on_topic", "topic": "payment_grace"}
+{"question": "Бесплатно ли вы перевозите сайты от конкурентов?", "kind": "on_topic", "topic": "migration"}
+{"question": "В три часа ночи мне кто-нибудь ответит в поддержке?", "kind": "on_topic", "topic": "support_hours"}
+{"question": "Приложение подвисло, как его перезапустить самостоятельно?", "kind": "on_topic", "topic": "restart_app"}
+{"question": "Хочу вход в панель по коду из приложения — как включить?", "kind": "on_topic", "topic": "two_factor"}
+{"question": "Умеете ли вы ставить WordPress автоматически?", "kind": "on_topic", "topic": "wordpress"}
+{"question": "Если на сайт придёт много посетителей, за трафик доплачивать?", "kind": "on_topic", "topic": "traffic"}
+{"question": "На тарифе Бизнес какой объём у одного почтового ящика?", "kind": "on_topic", "topic": "mail_quota"}
+{"question": "У меня сайт на .NET — сможете разместить?", "kind": "partial", "topic": "windows_hosting"}
+{"question": "Сколько в рублях стоит Бизнес при оплате за год?", "kind": "partial", "topic": "business_price"}
+{"question": "Ничего не получается", "kind": "vague", "topic": "vague"}
+{"question": "Помогите разобраться", "kind": "vague", "topic": "vague"}
+{"question": "Какая столица Канады?", "kind": "off_topic", "topic": "geography"}
+{"question": "Напиши функцию на Python, которая считает факториал.", "kind": "off_topic", "topic": "code"}
+{"question": "Напиши четверостишие про осень.", "kind": "off_topic", "topic": "creative"}
+{"question": "Сколько будет 256 разделить на 8?", "kind": "off_topic", "topic": "math"}
+{"question": "Как сварить рис, чтобы не слипался?", "kind": "off_topic", "topic": "cooking"}
+{"question": "Какие тарифы у Selectel?", "kind": "off_topic", "topic": "other_hosting"}
+{"question": "Почему луна меняет форму?", "kind": "off_topic", "topic": "science"}
+{"question": "Как научиться говорить «нет» коллегам?", "kind": "off_topic", "topic": "advice"}

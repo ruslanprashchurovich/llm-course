@@ -1,0 +1,29 @@
+# Модуль 07: Мульти-агентные системы
+#
+# Уроки 7.1 и 7.2 работают в обычном окружении курса: нужен только httpx.
+# Уроки 7.3-7.4 тянут фреймворки - для них создайте ОТДЕЛЬНОЕ окружение
+# прямо в папке модуля (см. README):
+#   python -m venv .venv
+#   .\.venv\Scripts\Activate.ps1
+#   pip install -r requirements.txt
+
+httpx>=0.27,<1
+
+# Для ноутбуков
+jupyter>=1.0,<2
+
+# Урок 7.3. Версии пиним: агентные фреймворки меняют API быстро.
+crewai==1.15.17
+
+# Урок 7.4
+langgraph>=1.2,<2
+langchain-ollama>=1.1,<2
+grandalf>=0.8            # ASCII-отрисовка графа
+autogen-agentchat==0.7.5
+autogen-ext[ollama]==0.7.5
+
+# ВАЖНО, второй шаг установки: autogen пинит protobuf 5.x и этим ломает импорт
+# crewai (телеметрии chromadb нужен генкод 6.x). Runtime новее генкода допустим,
+# поэтому ПОСЛЕ pip install -r requirements.txt выполните отдельно:
+#   pip install "protobuf>=6.33"
+# (предупреждение резолвера про autogen-core безвредно - живой разбор в уроке 7.4)

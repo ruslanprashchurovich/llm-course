@@ -1,0 +1,42 @@
+# Пример systemd-юнита для Ollama (Linux).
+# Официальный установщик (curl -fsSL https://ollama.com/install.sh | sh)
+# уже создаёт похожий юнит: /etc/systemd/system/ollama.service.
+# Тогда переменные окружения правильнее добавлять drop-in'ом:
+#   sudo systemctl edit ollama      # откроет override.conf
+# и вписать туда секцию [Service] со строками Environment=... как ниже,
+# затем: sudo systemctl daemon-reload && sudo systemctl restart ollama
+#
+# Этот файл — самодостаточный вариант «с нуля»:
+#   sudo cp ollama.service /etc/systemd/system/ollama.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now ollama
+
+[Unit]
+Description=Ollama local LLM server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/ollama serve
+User=ollama
+Group=ollama
+Restart=always
+RestartSec=3
+
+# Слушаем только localhost: у Ollama нет встроенной аутентификации
+Environment="OLLAMA_HOST=127.0.0.1:11434"
+# Где лежат модели (каталог должен принадлежать пользователю ollama)
+Environment="OLLAMA_MODELS=/var/lib/ollama/models"
+# Держать модель в RAM 30 минут после последнего запроса
+Environment="OLLAMA_KEEP_ALIVE=30m"
+# CPU-инференс упирается в память: параллелизм > 1 не даёт throughput
+Environment="OLLAMA_NUM_PARALLEL=1"
+Environment="OLLAMA_MAX_LOADED_MODELS=1"
+Environment="OLLAMA_MAX_QUEUE=128"
+
+# Потолок памяти (cgroups v2): пусть systemd перезапустит службу,
+# чем OOM-killer убьёт произвольный процесс или хост уйдёт в swap.
+MemoryMax=12G
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,153 @@
+[
+    {
+        "id": "otpusk-days",
+        "question": "Сколько дней отпуска положено в году?",
+        "expected_docs": [
+            "otpusk"
+        ],
+        "answerable": true,
+        "reference": "28 календарных дней оплачиваемого отпуска в год.",
+        "reference_facts": [
+            "Положено 28 календарных дней отпуска в год"
+        ]
+    },
+    {
+        "id": "otpusk-zayavka",
+        "question": "За сколько дней нужно подать заявку на отпуск?",
+        "expected_docs": [
+            "otpusk"
+        ],
+        "answerable": true,
+        "reference": "Минимум за 14 дней до начала отпуска, через HR-портал.",
+        "reference_facts": [
+            "Заявка подаётся минимум за 14 дней до начала отпуска"
+        ]
+    },
+    {
+        "id": "bolnichny-doplata",
+        "question": "Сколько компания доплачивает в первые дни болезни?",
+        "expected_docs": [
+            "bolnichny"
+        ],
+        "answerable": true,
+        "reference": "До 100% оклада первые 10 дней болезни при стаже в компании больше года.",
+        "reference_facts": [
+            "Доплата — до 100% оклада",
+            "Доплата действует первые 10 дней болезни",
+            "Условие — стаж в компании больше года"
+        ]
+    },
+    {
+        "id": "bolnichny-bez-lista",
+        "question": "Сколько дней можно болеть без больничного листа?",
+        "expected_docs": [
+            "bolnichny"
+        ],
+        "answerable": true,
+        "reference": "До 3 дней болезни в квартал без больничного листа с сохранением оплаты.",
+        "reference_facts": [
+            "Без больничного листа можно болеть до 3 дней",
+            "Лимит действует в пределах квартала"
+        ]
+    },
+    {
+        "id": "oncall-night",
+        "question": "За сколько минут дежурный должен отреагировать ночью?",
+        "expected_docs": [
+            "incidents"
+        ],
+        "answerable": true,
+        "reference": "Ночью — в течение 30 минут (в рабочее время — 15 минут).",
+        "reference_facts": [
+            "Ночью дежурный должен отреагировать в течение 30 минут"
+        ]
+    },
+    {
+        "id": "oncall-nadbavka",
+        "question": "Какая надбавка положена за неделю дежурства?",
+        "expected_docs": [
+            "incidents"
+        ],
+        "answerable": true,
+        "reference": "15% к окладу за неделю дежурства.",
+        "reference_facts": [
+            "Надбавка за неделю дежурства — 15% к окладу"
+        ]
+    },
+    {
+        "id": "zagranitsa",
+        "question": "Сколько дней в году можно работать из-за границы?",
+        "expected_docs": [
+            "udalenka"
+        ],
+        "answerable": true,
+        "reference": "До 90 дней в году, уведомив HR минимум за 2 недели.",
+        "reference_facts": [
+            "Из-за границы можно работать до 90 дней в году",
+            "Нужно уведомить HR минимум за 2 недели"
+        ]
+    },
+    {
+        "id": "billing-approvals",
+        "question": "Сколько одобрений нужно для изменений в биллинге?",
+        "expected_docs": [
+            "code-review"
+        ],
+        "answerable": true,
+        "reference": "Два одобрения, одно из которых — от владельца сервиса.",
+        "reference_facts": [
+            "Нужно два одобрения",
+            "Одно из одобрений — от владельца сервиса"
+        ]
+    },
+    {
+        "id": "deploy-days",
+        "question": "В какие дни разрешён деплой в production?",
+        "expected_docs": [
+            "deploy"
+        ],
+        "answerable": true,
+        "reference": "С понедельника по четверг с 11:00 до 17:00.",
+        "reference_facts": [
+            "Деплой в production разрешён с понедельника по четверг",
+            "Деплой разрешён с 11:00 до 17:00"
+        ]
+    },
+    {
+        "id": "upal-prod",
+        "question": "Упал прод, что делать в первую очередь?",
+        "expected_docs": [
+            "incidents"
+        ],
+        "answerable": true,
+        "reference": "Это инцидент SEV1: создаётся war room в канале #incident и назначается координатор.",
+        "reference_facts": [
+            "При SEV1 создаётся war room в канале #incident",
+            "Назначается координатор инцидента"
+        ]
+    },
+    {
+        "id": "overtime-weekend",
+        "question": "Сколько платят за переработки в выходные?",
+        "expected_docs": [],
+        "answerable": false,
+        "reference": "В базе знаний нет ответа на этот вопрос.",
+        "reference_facts": []
+    },
+    {
+        "id": "parking",
+        "question": "Есть ли у офиса парковка для сотрудников?",
+        "expected_docs": [],
+        "answerable": false,
+        "reference": "В базе знаний нет ответа на этот вопрос.",
+        "reference_facts": []
+    },
+    {
+        "id": "budget",
+        "question": "Какой бюджет компании на следующий год?",
+        "expected_docs": [],
+        "answerable": false,
+        "reference": "В базе знаний нет ответа на этот вопрос.",
+        "reference_facts": []
+    }
+]

@@ -1,0 +1,73 @@
+модель: qwen3.5:9b (think=False), backend=ollama, задача: parse_size, приёмка: 6 кейсов
+
+=== LangGraph ===
+  аналитик -> разработчик (spec) [400 ток, 9 c]
+  разработчик -> тесты (code) [585 ток, 13 c]
+  тесты -> оркестратор (test_report)
+    тесты: 6/6
+
+ВЕРДИКТ: ACCEPTED
+Цена: 2 вызовов LLM, 711+985 ток., 22.8 c
+Маршрут по узлам: analyst -> developer -> tester -> finish
+
+Финальный код:
+import re
+
+def parse_size(text: str) -> int:
+    """
+    Переводит человекочитаемый размер диска в число байтов (множитель 1024).
+    
+    Поддерживаемые суффиксы: КБ, МБ, ГБ, ТБ (русскими буквами).
+    Пробел между числом и единицей необязателен. Число может быть дробным.
+    Голое число без единицы - это уже байты.
+    
+    Args:
+        text (str): Строка с размером (например, "5 ГБ", "1024 КБ", "0.5 МБ").
+        
+    Returns:
+        int: Размер в байтах.
+        
+    Raises:
+        ValueError: Если формат строки некорректен или суффикс неизвестен.
+    """
+    if not isinstance(text, str):
+        raise TypeError("Входной параметр должен быть строкой.")
+    
+    # Нормализация регистра для надежного распознавания суффиксов
+    text_upper = text.upper()
+    
+    # Множители для КБ, МБ, ГБ, ТБ (2^10 = 1024)
+    multipliers = {
+        'КБ': 1024,
+        'МБ': 1024 ** 2,
+        'ГБ': 1024 ** 3,
+        'ТБ': 1024 ** 4
+    }
+    
+    # Регулярное выражение для извлечения числа и суффикса
+    # Группы: (число) (суффикс)?
+    # \s* позволяет игнорировать пробелы между числом и суффиксом
+    pattern = r'^(\d+(?:\.\d+)?)\s*(КБ|МБ|ГБ|ТБ)?$'
+    
+    match = re.match(pattern, text_upper)
+    
+    if not match:
+        raise ValueError(f"Некорректный формат размера: '{text}'")
+    
+    number_str = match.group(1)
+    suffix = match.group(2)  # Может быть None
+    
+    try:
+        value = float(number_str)
+    except ValueError:
+        raise ValueError(f"Ошибка при преобразовании числа: '{number_str}'")
+        
+    if suffix is None:
+        # Если суффикса нет, множитель равен 1 (байты)
+        multiplier = 1
+    else:
+        multiplier = multipliers[suffix]
+        
+    result = value * multiplier
+    
+    return int(result)

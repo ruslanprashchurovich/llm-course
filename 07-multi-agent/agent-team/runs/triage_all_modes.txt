@@ -1,0 +1,67 @@
+backend=ollama -> http://127.0.0.1:11434 / qwen3.5:9b; think=False; тикетов: 12
+
+===== solo =====
+  [solo    ] T01 OK  outage/critical/human        gold outage/critical/human  [+++] 1 выз., 4 c
+  [solo    ] T02 ЧЕЛ billing/high/human           gold billing/normal/human  [+-+] 1 выз., 2 c
+  [solo    ] T03 OK  question/low/bot             gold question/low/bot  [+++] 1 выз., 2 c
+  [solo    ] T04 OK  access/high/human            gold access/normal/human  [+-+] 1 выз., 2 c
+  [solo    ] T05 OK  performance/normal/bot       gold performance/normal/bot  [+++] 1 выз., 2 c
+  [solo    ] T06 OK  other/low/bot                gold other/low/bot  [+++] 1 выз., 2 c
+  [solo    ] T07 OK  outage/high/human            gold outage/high/human  [+++] 1 выз., 2 c
+  [solo    ] T08 OK  billing/normal/human         gold billing/low/bot  [+--] 1 выз., 3 c
+  [solo    ] T09 OK  access/high/human            gold access/critical/human  [+-+] 1 выз., 2 c
+  [solo    ] T10 OK  question/low/bot             gold question/low/bot  [+++] 1 выз., 2 c
+  [solo    ] T11 OK  outage/high/human            gold performance/high/human  [-++] 1 выз., 2 c
+  [solo    ] T12 OK  other/low/human              gold other/normal/human  [+-+] 1 выз., 2 c
+
+===== solo+fix =====
+  [solo+fix] T01 OK  outage/high/human            gold outage/critical/human  [+-+] 1 выз., 2 c
+  [solo+fix] T02 OK  billing/low/human            gold billing/normal/human  [+-+] 2 выз., 5 c
+  [solo+fix] T03 OK  question/low/bot             gold question/low/bot  [+++] 1 выз., 2 c
+  [solo+fix] T04 OK  access/high/human            gold access/normal/human  [+-+] 1 выз., 2 c
+  [solo+fix] T05 OK  performance/normal/bot       gold performance/normal/bot  [+++] 1 выз., 2 c
+  [solo+fix] T06 OK  other/low/human              gold other/low/bot  [++-] 1 выз., 2 c
+  [solo+fix] T07 OK  outage/high/human            gold outage/high/human  [+++] 1 выз., 2 c
+  [solo+fix] T08 OK  billing/normal/human         gold billing/low/bot  [+--] 1 выз., 3 c
+  [solo+fix] T09 OK  access/high/human            gold access/critical/human  [+-+] 1 выз., 2 c
+  [solo+fix] T10 OK  question/low/bot             gold question/low/bot  [+++] 1 выз., 2 c
+  [solo+fix] T11 OK  outage/high/human            gold performance/high/human  [-++] 1 выз., 2 c
+  [solo+fix] T12 OK  other/low/human              gold other/normal/human  [+-+] 1 выз., 2 c
+
+===== team =====
+  [team    ] T01 OK  outage/critical/human        gold outage/critical/human  [+++] 2 выз., 4 c
+  [team    ] T02 OK  billing/normal/human         gold billing/normal/human  [+++] 3 выз., 7 c
+  [team    ] T03 OK  question/low/bot             gold question/low/bot  [+++] 3 выз., 4 c
+  [team    ] T04 OK  access/high/human            gold access/normal/human  [+-+] 2 выз., 3 c
+  [team    ] T05 OK  performance/normal/bot       gold performance/normal/bot  [+++] 2 выз., 3 c
+  [team    ] T06 OK  other/low/bot                gold other/low/bot  [+++] 2 выз., 2 c
+  [team    ] T07 OK  outage/high/human            gold outage/high/human  [+++] 2 выз., 3 c
+  [team    ] T08 OK  billing/normal/human         gold billing/low/bot  [+--] 2 выз., 2 c
+  [team    ] T09 OK  access/critical/human        gold access/critical/human  [+++] 2 выз., 4 c
+  [team    ] T10 OK  question/low/bot             gold question/low/bot  [+++] 2 выз., 2 c
+  [team    ] T11 OK  outage/high/human            gold performance/high/human  [-++] 2 выз., 3 c
+  [team    ] T12 OK  other/low/human              gold other/normal/human  [+-+] 2 выз., 3 c
+
+===== сравнение =====
+метрика                      solo  solo+fix  team 
+---------------------------  ----  --------  -----
+тикетов                      12    12        12   
+принято судьёй               92%   100%      100% 
+эскалаций «нужен человек»    1     0         0    
+схема соблюдена              100%  100%      100% 
+цитаты заземлены             100%  100%      100% 
+правила соблюдены            92%   100%      100% 
+category верно               92%   92%       92%  
+priority верно (точно)       58%   50%       75%  
+priority верно (±1 уровень)  100%  100%      100% 
+needs_human верно            92%   83%       92%  
+КАЧЕСТВО (среднее трёх)      81%   75%       86%  
+вызовов LLM                  12    13        26   
+токенов всего                7881  8741      12052
+секунд                       29    30        41   
+
+Команда дала +11 п.п. качества за ×1.4 токенов против «solo+fix» — окупилось, если эти пункты стоят удвоенного счёта за LLM.
+
+Команда дала +6 п.п. качества за ×1.5 токенов против «solo» — окупилось, если эти пункты стоят удвоенного счёта за LLM.
+
+результаты: runs\triage_results.json

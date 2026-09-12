@@ -1,0 +1,16 @@
+# Модуль 02: Embeddings и векторные базы данных
+# Установка: pip install -r requirements.txt
+# (torch подтянется автоматически как зависимость sentence-transformers;
+#  на Windows по умолчанию ставится CPU-сборка — это то, что нам нужно)
+
+sentence-transformers>=3.0,<6
+chromadb>=1.0,<2
+qdrant-client>=1.12,<2
+numpy>=1.26,<3
+
+# Для ноутбуков
+jupyter>=1.0,<2
+ipywidgets>=8.0,<9
+
+# Опционально (урок 1, альтернатива через Ollama) — ничего ставить не нужно,
+# используем стандартный urllib; сам Ollama ставится отдельно с ollama.com

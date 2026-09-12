@@ -1,0 +1,9 @@
+# ollama-proxy — финальная практика модуля 5
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30,<1
+httpx>=0.27,<1
+pydantic>=2.7,<3
+prometheus-client>=0.20,<1
+
+# для тестов
+pytest>=8,<9
