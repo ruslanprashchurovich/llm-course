@@ -10,7 +10,7 @@
 from __future__ import annotations
 
 import logging
-from collections.abc import AsyncIterator
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
@@ -42,7 +42,9 @@ async def _init_services(app: FastAPI, settings: Settings) -> None:
 
     logger.info("Инициализация сервисов (первый запуск скачивает модели)...")
 
-    embeddings = EmbeddingService(settings.embedding_model, batch_size=settings.embedding_batch_size)
+    embeddings = EmbeddingService(
+        settings.embedding_model, batch_size=settings.embedding_batch_size
+    )
     embeddings.load()
 
     reranker: RerankerService | None = None
@@ -92,7 +94,7 @@ async def _shutdown_services(app: FastAPI) -> None:
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+async def lifespan(app: FastAPI) -> AsyncGenerator[None]:
     """Жизненный цикл приложения: до yield — старт, после — остановка.
 
     В тестовом окружении тяжёлая инициализация пропускается: тесты кладут
@@ -131,7 +133,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     # клиенту не нужно угадывать форму тела по коду ответа, а request_id
     # в теле ведёт к строкам лога так же надёжно, как заголовок.
     def _error(request: Request, status_code: int, detail: str) -> JSONResponse:
-        body = ErrorResponse(detail=detail, request_id=getattr(request.state, "request_id", None))
+        body = ErrorResponse(
+            detail=detail, request_id=getattr(request.state, "request_id", None)
+        )
         return JSONResponse(status_code=status_code, content=body.model_dump())
 
     @app.exception_handler(LLMError)
@@ -141,7 +145,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return _error(request, 502, f"Ошибка LLM-сервера: {exc}")
 
     @app.exception_handler(StarletteHTTPException)
-    async def http_error_handler(request: Request, exc: StarletteHTTPException) -> JSONResponse:
+    async def http_error_handler(
+        request: Request, exc: StarletteHTTPException
+    ) -> JSONResponse:
         """503 из dependencies, 404/405 от роутера — тоже ErrorResponse."""
         return _error(request, exc.status_code, str(exc.detail))
 
